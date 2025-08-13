@@ -1,16 +1,16 @@
 import { Router } from 'express'
-import {{ protect }} from '../middleware/auth.js' assert {{ type: 'json' }};
-
 const r = Router()
 
-// simple import of mock data (inline to avoid fs reads)
-const projects = {json.dumps(mock_projects, indent=2)}
+const projects = [
+  { id: 'p1', name: 'HQ Renovation', address: '123 Main St', timeline: 'Aug–Oct 2025' },
+  { id: 'p2', name: 'Water Park Expansion', address: '800 River Rd', timeline: 'Sep–Dec 2025' }
+]
 
-r.get('/', (req, res) => res.json(projects))
-r.get('/:id', (req, res) => {{
+r.get('/', (_req, res) => res.json(projects))
+r.get('/:id', (req, res) => {
   const p = projects.find(x => x.id === req.params.id)
-  if (!p) return res.status(404).json({{ error: 'Not found' }})
+  if (!p) return res.status(404).json({ error: 'Not found' })
   res.json(p)
-}})
+})
 
 export default r
