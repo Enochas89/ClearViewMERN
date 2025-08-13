@@ -28,3 +28,9 @@ app.use('/api/invites', inviteRoutes)
 app.use((req, res) => res.status(404).json({ error: 'Not found' }))
 
 app.listen(PORT, () => console.log(`🚀 Server on http://localhost:${PORT}`))
+
+import metaRoutes from './routes/metaRoutes.js'
+import searchRoutes from './routes/searchRoutes.js'
+
+app.use('/api', metaRoutes)
+app.use('/api/search', searchRoutes)
