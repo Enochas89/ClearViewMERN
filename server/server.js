@@ -8,6 +8,7 @@ import taskRoutes from './routes/taskRoutes.js'
 import postRoutes from './routes/postRoutes.js'
 import chatRoutes from './routes/chatRoutes.js'
 import inviteRoutes from './routes/inviteRoutes.js'
+import metaRoutes from './routes/metaRoutes.js'
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -24,13 +25,8 @@ app.use('/api/tasks', taskRoutes)
 app.use('/api/posts', postRoutes)
 app.use('/api/chats', chatRoutes)
 app.use('/api/invites', inviteRoutes)
+app.use('/api', metaRoutes) // <-- adds /api/meta and /api/users
 
 app.use((req, res) => res.status(404).json({ error: 'Not found' }))
 
 app.listen(PORT, () => console.log(`🚀 Server on http://localhost:${PORT}`))
-
-import metaRoutes from './routes/metaRoutes.js'
-import searchRoutes from './routes/searchRoutes.js'
-
-app.use('/api', metaRoutes)
-app.use('/api/search', searchRoutes)

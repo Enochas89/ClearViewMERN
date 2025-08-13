@@ -15,4 +15,5 @@ export const USERS = [
 
 r.get('/meta', (_req, res) => res.json(META))
 r.get('/users', (_req, res) => res.json(USERS))
+
 export default r
